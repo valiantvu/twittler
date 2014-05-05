@@ -3,29 +3,43 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
   </head>
-  <body>
-    <!-- <input type="submit" id="refreshButton" value="Refresh" onclick="refresh()"/> -->
-    <button name="button" id="refreshButton" onclick="refresh">Refresh</button>
+  <body background="http://i.imgur.com/PyKPjMh.jpg">
+
+    <!-- Header -->
+    <div id="header">
+      <p id="heading">Twittler</p>
+      <p id="handle">@myhandle</p>
+    </div>
+
+    <div class="left"></div>
+
+    <div class="feed">
+      <h4>Tweetles</h4>
+      <button id="refreshButton">Refresh</button>
+    </div>
+
+
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
+        var $feed = $('.feed');
         // $body.html('');       
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<div class="tweet"><p></p></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at + " index: " +   index);
-          $tweet.appendTo($body);
+          $tweet.appendTo($feed);
           index -= 1;
         }
 
         var refresh = function() {
           var tweet = streams.home[streams.home.length - 1];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<div class="tweet"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at + " NEW");
-          $tweet.appendTo($body);
+          $tweet.appendTo($feed);
         }
         $("#refreshButton").on("click", refresh);
       });
