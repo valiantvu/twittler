@@ -69,6 +69,7 @@ h4 {
 	display: none;
 	font-style: italic;
 	color: gray;
+	margin-top: 30px;
 }
 
 .tweetuser {
@@ -95,8 +96,6 @@ p {
 
 .hover {
 	font-weight: bold;
-	/*font-color: blue;*/
-	/*text-decoration: underline;*/
 }
 
 #refreshButton {
