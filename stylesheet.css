@@ -1,0 +1,109 @@
+div {
+	border-radius: 5px;
+}
+
+#header {
+	z-index: 1;
+	position: fixed;
+	width: 97.5%;
+	margin-top: -20px;
+	height: 60px;
+	background-color: black;
+	margin-bottom: 10px;
+}
+
+#heading {
+	float: left;
+	margin-left: 5px;
+	padding-top: 10px;
+	font-size: 30px;
+	font-family: Helvetica;
+	color: #ffffff;
+}
+
+#handle{
+	float: right;
+	margin-right: 5px;
+	padding-top: 20px;
+	font-size: 16px;
+	font-family: Helvetica;
+	font-size: 14px;
+	color: #ffffff;
+}
+
+h4 {
+	margin-left: 5px;
+	margin-bottom: 15px;
+	font-family: Verdana, sans-serif;
+}
+
+.feed {
+	position: relative;
+	float: center;
+	padding-top: 30px;
+	width: 400px;
+	height: 900px;
+	background-color: white;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: .8;
+}
+
+.tweet {
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: gray;
+	position: relative;
+	float: left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-right: 30px;
+	height: 30px;
+	width: 90%;
+
+}
+
+#status {
+	display: none;
+	font-style: italic;
+	color: gray;
+}
+
+.tweetuser {
+	font-style: bold;
+	font-family: Helvetica;
+	font-size: 12px;
+}
+
+.tweetmessage {
+	font-family: Helvetica;
+	font-size: 14px;
+}
+
+.tweettime {
+	color: gray;
+	font-style: italic;
+	font-size: 12px;
+}
+
+p {
+	margin-top: 0em;
+	margin-bottom: .4em;
+}
+
+.hover {
+	font-weight: bold;
+	/*font-color: blue;*/
+	/*text-decoration: underline;*/
+}
+
+#refreshButton {
+	float: left;
+	margin: 10px;
+	padding: 5px;
+	border: 1px solid black;
+	width: 45px;
+	font-size: 14px;
+}
