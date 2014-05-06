@@ -97,15 +97,15 @@
 
         // user interactions
 
-        $(".tweetuser").on("mouseenter", function() {
+        $("#tweetles").on("mouseenter", ".tweetuser",function() {
           $(this).addClass("hover");
         })
 
-        $(".tweetuser").on("mouseleave", function() {
+        $("#tweetles").on("mouseleave", ".tweetuser", function() {
           $(this).removeClass("hover");
         })
 
-        $(".tweetuser").on("click", function() {
+        $("#tweetles").on("click", ".tweetuser", function() {
           user = $(this).text().split('@')[1];
           $(".tweet").remove();
           var $feed = $('.feed #tweetles');
