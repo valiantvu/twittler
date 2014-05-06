@@ -32,7 +32,6 @@
         var index = numTweetles;
         var user;
         var stream;
-        var userstream;
 
         // load initial tweetles
         while(index > 0){
@@ -52,12 +51,16 @@
 
         // refresh feed with new tweetles
         var refresh = function() {
+
+          // determine which stream to use, user or home
           if (user === undefined){
             stream = streams.home;
           }
           else{
             stream = streams.users[user];
           }
+
+          // number of new tweetles
           var addNum = stream.length - numTweetles;
 
           if (addNum == 0){
@@ -66,6 +69,8 @@
           else{
             $("#status").hide();
           }
+
+          // add each new tweetle
           var index = 0;
           while(index < addNum){ 
 
@@ -80,14 +85,17 @@
             $tweettime.text(tweet.created_at);
             $tweet.append($tweetuser, $tweetmessage, $tweettime);
             $tweet.prependTo($feed);
-            $("#tweetles div:last").remove();
+            
+            if ($(".tweet").length > 11){
+              $("#tweetles div:last").remove();              
+            }
+
             index += 1;
           }
           numTweetles = stream.length;
-
         }
 
-        $("#refreshButton").on("click", refresh);
+        // user interactions
 
         $(".tweetuser").on("mouseenter", function() {
           $(this).addClass("hover");
@@ -119,6 +127,8 @@
             index -= 1;
           }
         });
+
+        $("#refreshButton").on("click", refresh);
 
       });
 
