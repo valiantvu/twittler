@@ -17,7 +17,7 @@
 
     <div class="feed">
       <h4>Tweetles</h4>
-      <button id="refreshButton">Refresh</button>
+      <div id="refreshButton">Refresh</div>
       <p id="status">No updates available</p>
       <div id="tweetles">
       </div>
@@ -127,6 +127,14 @@
             index -= 1;
           }
         });
+
+        $("#refreshButton").on("mouseenter", function() {
+          $(this).addClass("hover");
+        })
+
+        $("#refreshButton").on("mouseleave", function() {
+          $(this).removeClass("hover");
+        })
 
         $("#refreshButton").on("click", refresh);
 
