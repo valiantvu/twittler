@@ -18,29 +18,50 @@
     <div class="feed">
       <h4>Tweetles</h4>
       <button id="refreshButton">Refresh</button>
+      <p id="status">No updates available</p>
+      <div id="tweetles">
+      </div>
     </div>
 
 
     <script>
 
       $(document).ready(function(){
-        var $feed = $('.feed');
+        var $feed = $('.feed #tweetles');
         // $body.html('');       
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div class="tweet"><p></p></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at + " index: " +   index);
+        var numTweetles = streams.home.length;
+        var index = numTweetles;
+
+        // load initial tweetles
+        while(index > 0){
+          var tweet = streams.home[index - 1];
+          var $tweet = $('<div class="tweet"></div>');
+          $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at + " index: " + (index - 1) + " num tweetles: " + numTweetles);
           $tweet.appendTo($feed);
           index -= 1;
         }
 
+        // refresh feed with new tweetles
         var refresh = function() {
-          var tweet = streams.home[streams.home.length - 1];
-          var $tweet = $('<div class="tweet"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at + " NEW");
-          $tweet.appendTo($feed);
+          var addNum = streams.home.length - numTweetles; // 13 - 10 = 3 
+          if (addNum == 0){
+            $("#status").show();
+          }
+          else{
+            $("#status").hide();
+          }
+          var index = 0;
+          while(index < addNum){ // 0 < 3
+            var tweet = streams.home[numTweetles + index];  //10 + 0
+            var $tweet = $('<div class="tweet"></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at + " NEW, index: " + (index + numTweetles));
+            $tweet.prependTo($feed);
+            $("#tweetles div:last").remove();
+            index += 1;
+          }
+          numTweetles = streams.home.length;
         }
+
         $("#refreshButton").on("click", refresh);
       });
 
