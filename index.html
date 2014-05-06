@@ -36,8 +36,19 @@
         while(index > 0){
           var tweet = streams.home[index - 1];
           var $tweet = $('<div class="tweet"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at + " index: " + (index - 1) + " num tweetles: " + numTweetles);
-          $tweet.appendTo($feed);
+          var $tweetuser = $('<p class="tweetuser"></p>');
+          var $tweetmessage = $('<p class="tweetmessage"></p>');
+          var $tweettime = $('<p class="tweettime"></p>');
+          var newline = $('<br/>');
+          $tweetuser.text('@' + tweet.user);
+          $tweetmessage.text(tweet.message);
+          $tweettime.text(tweet.created_at);
+          $tweet.append($tweetuser);
+          $tweet.append($tweetmessage);
+          $tweet.append($tweettime);
+          
+          // $tweet = $tweetuser + $tweetmessage + $tweettime;
+          $feed.append($tweet);
           index -= 1;
         }
 
@@ -54,7 +65,7 @@
           while(index < addNum){ // 0 < 3
             var tweet = streams.home[numTweetles + index];  //10 + 0
             var $tweet = $('<div class="tweet"></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at + " NEW, index: " + (index + numTweetles));
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + tweet.created_at);
             $tweet.prependTo($feed);
             $("#tweetles div:last").remove();
             index += 1;
